@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <title>Editar dados</title>
+</head>
+<body>
+
+<form method="POST" action="/editarCadastro">
+    <input type="hidden" name="id" th:value="${cadastro.id}" />
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Nome</label>
+        <input type="text" class="form-control" name="inputNome" th:value="${cadastro.inputNome}" />
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Endereço de Email</label>
+        <input type="email" class="form-control" name="inputEmail" th:value="${cadastro.inputEmail}" />
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Telefone</label>
+        <input type="text" class="form-control" name="inputTelefone" th:value="${cadastro.inputTelefone}" />
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+
+</body>
+</html>

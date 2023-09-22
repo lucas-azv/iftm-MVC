@@ -1,0 +1,15 @@
+a{
+    text-decoration: none;
+    color: rgb(68, 68, 68);
+    font-weight: bold;
+}
+a:visited{
+    text-decoration: none;
+    color: rgb(68, 68, 68);
+    font-weight: bold;
+}
+a:default{
+    text-decoration: none;
+    color: rgb(68, 68, 68);
+    font-weight: bold;
+}
