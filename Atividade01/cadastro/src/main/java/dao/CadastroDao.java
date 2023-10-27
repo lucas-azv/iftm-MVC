@@ -16,13 +16,7 @@ public class CadastroDao {
     public List<CadastroDTO> getCadastro() {
         String sql = "select  id,nome,email,telefone from tb_cadastro";
 
-        return db.query(sql, (res, rowNum) -> {
-            return new CadastroDTO(
-                    res.getLong("id"),
-                    res.getString("inputNome"),
-                    res.getString("inputEmail"),
-                    res.getString("inputTelefone"));
-        });
+        return db.query(sql, new BeanPropertyRowMapper<>(CadastroDTO.class));
     }
 
     public List<CadastroDTO> getCadastro(String inputNome) {
@@ -33,7 +27,7 @@ public class CadastroDao {
                 new Object[] { "%" + inputNome + "%" });
     }
 
-    public CadastroDTO getCadastro(Long id) {
+    public CadastroDTO getCadastroById(int id) {
         String sql = "select  id,nome,email,telefone from tb_cadastro where id = ?";
 
         return db.queryForObject(sql,
@@ -60,9 +54,13 @@ public class CadastroDao {
                 cadastro.getId());
     }
 
-    public void deleteCadastro(Long id) {
+    public void deleteCadastro(int id) {
         String sql = "delete from tb_cadastro where id = ?";
 
         db.update(sql, id);
+    }
+
+    public CadastroDTO getCadastro(int id) {
+        return null;
     }
 }

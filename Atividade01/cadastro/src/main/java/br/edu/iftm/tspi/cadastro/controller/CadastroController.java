@@ -46,13 +46,13 @@ public String postCadastro(CadastroDTO cadastro, Model model) {
         }
 
     @RequestMapping("deleteCadastro")
-    public String deleteCadastro(@RequestParam(value = "id") Long id, Model model) {
+    public String deleteCadastro(@RequestParam(value = "id") int id, Model model) {
         dao.deleteCadastro(id);
         return "redirect:/cadastros";
     }
 
     @RequestMapping("editCadastro")
-    public String editarCadastro(@RequestParam(value = "id") Long id, Model model) {
+    public String editarCadastro(@RequestParam(value = "id") int id, Model model) {
         model.addAttribute("cadastro",dao.getCadastro(id));
         model.addAttribute("cadastros",dao.getCadastro());
         model.addAttribute("edit",true);
@@ -65,7 +65,7 @@ public String postCadastro(CadastroDTO cadastro, Model model) {
     @PostMapping("cadastroResourcePost")
     public String doPost(CadastroDTO dto, Model model) {
 
-        dto.setId((long) (cadastros.size() + 1));
+        dto.setId((int) (cadastros.size() + 1));
         cadastros.add(dto);
         return doGet(model);
 
