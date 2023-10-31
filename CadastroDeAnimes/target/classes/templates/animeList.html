@@ -1,5 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt">
   <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,25 +16,50 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body style="padding: 12px">
+    <div class="mb-3">
+      <form th:action="@{/animesParametro}">
+        <label class="form-label">Título</label>
+        <input
+          type="text"
+          class="form-control"
+          th:name="titulo"
+          placeholder="Insira o título do anime"
+        />
+        <button type="submit" class="btn btn-primary" style="margin-top: 12px">
+          Pesquisar
+        </button>
+      </form>
+    </div>
+
     <table class="table">
       <thead>
         <tr>
+          <th scope="col">#</th>
           <th scope="col">Título</th>
           <th scope="col">Nota</th>
           <th scope="col">Episódios Assistidos</th>
           <th scope="col">Data de Início</th>
           <th scope="col">Data de Término</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
 
       <tbody>
         <tr th:each="anime : ${animes}">
+          <td th:text="${anime.id}"></td>
           <td th:text="${anime.titulo}"></td>
           <td th:text="${anime.nota}"></td>
           <td th:text="${anime.episodios}"></td>
           <td th:text="${anime.dataInicio}"></td>
           <td th:text="${anime.dataFim}"></td>
+          <td>
+            <a th:href="@{'/editarContato?id=' + ${contato.id}}">Editar</a>
+          </td>
+          <td>
+            <a th:href="@{'/excluirContato?id=' + ${contato.id}}">Excluir</a>
+          </td>
         </tr>
       </tbody>
     </table>
