@@ -16,17 +16,17 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body style="padding: 12px">
+  <body style="padding: 12px; width: 98%; margin: auto;">
     <div class="mb-3">
-      <form th:action="@{/animesParametro}">
-        <label class="form-label">Título</label>
+      <form th:action="@{/animesParametro}" method="get">
+        <label class="form-label">Pesquisa</label>
         <input
           type="text"
           class="form-control"
           th:name="titulo"
           placeholder="Insira o título do anime"
         />
-        <button type="submit" class="btn btn-primary" style="margin-top: 12px">
+        <button type="submit" class="btn btn-primary" style="margin-top: 12px;">
           Pesquisar
         </button>
       </form>
@@ -55,13 +55,43 @@
           <td th:text="${anime.dataInicio}"></td>
           <td th:text="${anime.dataFim}"></td>
           <td>
-            <a th:href="@{'/editarContato?id=' + ${contato.id}}">Editar</a>
+            <a th:href="@{'/editarAnime?id=' + ${anime.id}}">Editar</a>
           </td>
           <td>
-            <a th:href="@{'/excluirContato?id=' + ${contato.id}}">Excluir</a>
+            <a th:href="@{'/excluirAnime?id=' + ${anime.id}}">Excluir</a>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <form method="post" action="animes" th:object="${anime}">
+
+      <div class="form-group">
+        <label for="">Título do Anime</label>
+        <input class="form-control" type="text" th:field="*{titulo}" placeholder="Título">
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="">Nota</label>
+          <input type="text" class="form-control" th:field="*{nota}" placeholder="Nota">
+        </div>
+        <div class="col">
+          <label for="">Episódios Assistidos</label>
+          <input type="text" class="form-control" th:field="*{episodios}" placeholder="Episódios Assistidos">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="">Data de Início</label>
+          <input type="date" class="form-control" th:field="*{dataInicio}" placeholder="Data de Início">
+        </div>
+        <div class="col">
+          <label for="">Data de Término</label>
+          <input type="date" class="form-control" th:field="*{dataFim}" placeholder="Data de Término">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-top: 12px;">Enviar</button>
+    </form>
   </body>
 </html>

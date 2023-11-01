@@ -10,4 +10,7 @@ create table tb_anime(
     dataFim date
 );
 
-SELECT * FROM tb_anime 
+INSERT INTO tb_anime (titulo, nota, episodios, dataInicio, dataFim)
+VALUES ('Fullmetal Alchemist', '9', '64', '2023-10-02', '2023-11-02');
+
+SELECT * FROM tb_anime;
