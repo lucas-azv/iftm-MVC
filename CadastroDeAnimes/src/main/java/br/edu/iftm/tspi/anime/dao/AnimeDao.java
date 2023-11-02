@@ -23,8 +23,8 @@ public class AnimeDao {
             res.getString("titulo"),
             res.getString("nota"),
             res.getString("episodios"),
-            res.getDate("dataInicio"),
-            res.getDate("dataFim")
+            res.getDate("dataInicio").toLocalDate(),
+            res.getDate("dataFim").toLocalDate()
         ));
     }
 
@@ -62,7 +62,7 @@ public class AnimeDao {
         });
     }
 
-    public void editarAnime(Anime anime){
+    public void updateAnime(Anime anime){
         String sql = "UPDATE tb_anime SET titulo = ?, nota = ?, episodios = ?, dataInicio = ?, dataFim = ? WHERE id = ?";
         db.update(sql, new Object[] {
         anime.getTitulo(),

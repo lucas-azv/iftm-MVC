@@ -25,15 +25,14 @@ public class AnimeController {
         }
 
         @PostMapping("animes")
-        public String inserirAnime(Anime anime, Model model){
-            Anime animeDb = dao.getAnime(anime.getId());
-            if(animeDb == null){
+        public String updateAnime(Anime anime, Model model){
+            if(anime.getId() == null){
                 dao.inserirAnime(anime);
-        } else{
-            dao.editarAnime(anime);
+            } else{
+                dao.updateAnime(anime);
+            }
+            return getAnime(model);
         }
-        return getAnime(model);
-    }
 
         @RequestMapping("animesParametro")
         public String getAnime(@RequestParam(value="titulo", required = true) String titulo, Model model){
@@ -44,7 +43,7 @@ public class AnimeController {
         }
 
         @RequestMapping("editarAnime")
-        public String editarAnime(@RequestParam(value="id", required = true) Long id, Model model){
+        public String updateAnime(@RequestParam(value="id", required = true) Long id, Model model){
             Anime anime = dao.getAnime(id);
             model.addAttribute("anime", anime);
             model.addAttribute("animes", dao.getAnime());

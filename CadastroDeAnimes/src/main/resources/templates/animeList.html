@@ -18,7 +18,7 @@
   </head>
   <body style="padding: 12px; width: 98%; margin: auto;">
     <div class="mb-3">
-      <form th:action="@{/animesParametro}" method="get">
+      <form th:action="@{/animesParametro}">
         <label class="form-label">Pesquisa</label>
         <input
           type="text"
@@ -68,27 +68,27 @@
 
       <div class="form-group">
         <label for="">Título do Anime</label>
-        <input class="form-control" type="text" th:field="*{titulo}" placeholder="Título">
+        <input class="form-control" type="text" th:field="*{titulo}" placeholder="Título" required>
       </div>
 
       <div class="row">
         <div class="col">
           <label for="">Nota</label>
-          <input type="text" class="form-control" th:field="*{nota}" placeholder="Nota">
+          <input type="text" class="form-control" th:field="*{nota}" placeholder="Nota" required>
         </div>
         <div class="col">
           <label for="">Episódios Assistidos</label>
-          <input type="text" class="form-control" th:field="*{episodios}" placeholder="Episódios Assistidos">
+          <input type="text" class="form-control" th:field="*{episodios}" placeholder="Episódios Assistidos" required>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <label for="">Data de Início</label>
-          <input type="date" class="form-control" th:field="*{dataInicio}" placeholder="Data de Início">
+          <input type="date" class="form-control" th:field="*{dataInicio}" placeholder="Data de Início" required>
         </div>
         <div class="col">
           <label for="">Data de Término</label>
-          <input type="date" class="form-control" th:field="*{dataFim}" placeholder="Data de Término">
+          <input type="date" class="form-control" th:field="*{dataFim}" placeholder="Data de Término" required>
         </div>
       </div>
       <button type="submit" class="btn btn-primary" style="margin-top: 12px;">Enviar</button>
