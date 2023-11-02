@@ -13,6 +13,7 @@ import br.edu.iftm.tspi.anime.domain.Anime;
 @Controller
 
 public class AnimeController {
+
         @Autowired
         private AnimeDao dao;
         
@@ -25,7 +26,7 @@ public class AnimeController {
         }
 
         @PostMapping("animes")
-        public String updateAnime(Anime anime, Model model){
+        public String inserirAnime(Anime anime, Model model){
             if(anime.getId() == null){
                 dao.inserirAnime(anime);
             } else{
